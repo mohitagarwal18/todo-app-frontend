@@ -1,15 +1,31 @@
-import React from 'react';
-import './App.css';
-import {TodoNavbar} from './components/TodoNavbar'
-import { TodoApp } from "./components/TodoApp";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { Signup } from "./components/Signup";
+import { Login } from "./components/Login";
+import {TodoApp} from "./components/TodoApp"
+import { TodoTask } from "./components/TodoTask";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <TodoNavbar />
-      <TodoApp />
-    </div>
+    <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/dashboard">
+            <TodoApp />
+          </Route>
+          <Route path="/task/:taskID">
+            <TodoTask />
+          </Route>
+        </Switch>
+    </Router>
   );
 }
-
-export default App;
